@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAIL Critical Thinking Module | Suffolk University</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-deep-navy: #0a1628;
+            --color-slate: #1e293b;
+            --color-warm-white: #faf9f7;
+            --color-cream: #f5f3ef;
+            --color-gold: #c9a227;
+            --color-gold-muted: #b8943f;
+            --color-text: #334155;
+            --color-text-light: #64748b;
+            --color-accent-blue: #3b82f6;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-warm-white);
+            color: var(--color-text);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-slate) 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 2rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .institution-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 100px;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .institution-badge span {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .sail-mark {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-muted) 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--color-deep-navy);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 600;
+            color: white;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--color-gold);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.75);
+            max-width: 680px;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-gold);
+            color: var(--color-deep-navy);
+        }
+
+        .btn-primary:hover {
+            background: #d4ad2e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 162, 39, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-gold-muted);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--color-deep-navy);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-intro {
+            font-size: 1.15rem;
+            color: var(--color-text-light);
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: var(--color-cream);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .problem-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-slate) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.5rem;
+        }
+
+        .problem-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--color-deep-navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .problem-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        /* Framework Section */
+        .framework-section {
+            background: white;
+        }
+
+        .phase-timeline {
+            position: relative;
+            margin-top: 4rem;
+        }
+
+        .phase-timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--color-gold), var(--color-accent-blue), var(--color-deep-navy));
+            border-radius: 2px;
+        }
+
+        @media (min-width: 768px) {
+            .phase-timeline::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .phase-item {
+            position: relative;
+            padding-left: 70px;
+            padding-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .phase-item {
+                width: 50%;
+                padding-left: 0;
+                padding-right: 3rem;
+            }
+
+            .phase-item:nth-child(even) {
+                margin-left: 50%;
+                padding-left: 3rem;
+                padding-right: 0;
+            }
+        }
+
+        .phase-marker {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background: var(--color-warm-white);
+            border: 3px solid var(--color-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--color-deep-navy);
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .phase-marker {
+                left: auto;
+                right: -25px;
+            }
+
+            .phase-item:nth-child(even) .phase-marker {
+                left: -25px;
+                right: auto;
+            }
+        }
+
+        .phase-content {
+            background: var(--color-cream);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-gold);
+        }
+
+        .phase-item:nth-child(2) .phase-content {
+            border-left-color: var(--color-accent-blue);
+        }
+
+        .phase-item:nth-child(2) .phase-marker {
+            border-color: var(--color-accent-blue);
+        }
+
+        .phase-item:nth-child(3) .phase-content {
+            border-left-color: var(--color-deep-navy);
+        }
+
+        .phase-item:nth-child(3) .phase-marker {
+            border-color: var(--color-deep-navy);
+        }
+
+        .phase-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-deep-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-content .phase-subtitle {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-gold-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .phase-content p {
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+
+        .phase-sail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .sail-tag {
+            padding: 0.35rem 0.75rem;
+            background: white;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-text-light);
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .sail-tag.active {
+            background: var(--color-deep-navy);
+            color: white;
+            border-color: var(--color-deep-navy);
+        }
+
+        /* Credential Section */
+        .credential-section {
+            background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-slate) 100%);
+            color: white;
+        }
+
+        .credential-section .section-label {
+            color: var(--color-gold);
+        }
+
+        .credential-section .section-title {
+            color: white;
+        }
+
+        .credential-section .section-intro {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .credential-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .credential-feature {
+            padding: 2rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .credential-feature:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.12);
+        }
+
+        .credential-feature h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .credential-feature h3::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--color-gold);
+            border-radius: 50%;
+        }
+
+        .credential-feature p {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        /* Anti-Cheating Section */
+        .integrity-section {
+            background: var(--color-warm-white);
+        }
+
+        .integrity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .integrity-card {
+            position: relative;
+            padding: 2.5rem 2rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+
+        .integrity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-gold), var(--color-accent-blue));
+        }
+
+        .integrity-number {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--color-cream);
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            line-height: 1;
+        }
+
+        .integrity-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--color-deep-navy);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .integrity-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            position: relative;
+        }
+
+        .integrity-card .highlight {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--color-cream);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        /* SAIL Pillars */
+        .sail-section {
+            background: var(--color-cream);
+        }
+
+        .sail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .sail-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .sail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sail-pillar {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .sail-pillar:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .sail-letter {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.25rem;
+            background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-slate) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-gold);
+        }
+
+        .sail-pillar h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--color-deep-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .sail-pillar p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            line-height: 1.55;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .cta-section .section-title {
+            max-width: 600px;
+            margin: 0 auto 1rem;
+        }
+
+        .cta-section .section-intro {
+            margin: 0 auto 2.5rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-deep-navy);
+            color: rgba(255,255,255,0.6);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--color-gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-sail {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-sail span {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Proof Section */
+        .proof-section {
+            background: white;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .proof-box {
+            background: var(--color-cream);
+            border-radius: 16px;
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .proof-box {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .proof-label {
+            text-align: center;
+        }
+
+        .proof-label .badge {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: var(--color-deep-navy);
+            color: var(--color-gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .proof-label h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-deep-navy);
+        }
+
+        .proof-content blockquote {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--color-text);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--color-gold);
+        }
+
+        .proof-attribution {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .proof-attribution strong {
+            color: var(--color-text);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="institution-badge">
+                <div class="sail-mark">S</div>
+                <span>Suffolk University · SAIL Collaborative</span>
+            </div>
+            <h1>Teaching Students to <em>Think With</em> AI,<br>Not Just <em>Use</em> It</h1>
+            <p class="hero-subtitle">A portable, credentialed module that any professor can embed in any course — building the critical thinking skills students need for an AI-augmented world.</p>
+            <div class="hero-cta">
+                <a href="#framework" class="btn btn-primary">See the Framework →</a>
+                <a href="#credential" class="btn btn-secondary">About the Credential</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="problem-section">
+        <div class="container">
+            <span class="section-label">The Challenge</span>
+            <h2 class="section-title">Faculty Know This Matters.<br>They Just Need the Tools.</h2>
+            <p class="section-intro">Every professor sees it: students treating AI as an oracle rather than a tool. But building AI ethics curriculum from scratch isn't realistic for most faculty.</p>
+            
+            <div class="problem-grid">
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">🎓</div>
+                    <h3>The Faculty Gap</h3>
+                    <p>Professors want to address AI critical thinking but lack time, resources, and confidence to build it themselves. They need something turnkey.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">🤖</div>
+                    <h3>The Student Split</h3>
+                    <p>Some students avoid AI entirely; others outsource their thinking to it completely. Neither extreme prepares them for professional reality.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">📊</div>
+                    <h3>The Assessment Problem</h3>
+                    <p>Traditional knowledge tests fail when students can ask AI for answers. We need assessments that are impossible — or pointless — to outsource.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Framework -->
+    <section class="framework-section" id="framework">
+        <div class="container">
+            <span class="section-label">The Solution</span>
+            <h2 class="section-title">Three Phases. Any Discipline.<br>One Transferable Skill Set.</h2>
+            <p class="section-intro">Built on Suffolk's proven SAIL Framework, this module uses progressive scaffolding to develop genuine AI critical thinking — not just AI awareness.</p>
+
+            <div class="phase-timeline">
+                <div class="phase-item fade-in">
+                    <div class="phase-marker">1</div>
+                    <div class="phase-content">
+                        <span class="phase-subtitle">Foundation</span>
+                        <h3>Think Without the Crutch</h3>
+                        <p>Students engage with a discipline-relevant task using only their own knowledge and reasoning. This establishes baseline competence and reveals what they actually know versus what they assume AI will handle.</p>
+                        <p><strong>Why it matters:</strong> You can't evaluate AI output if you don't know what good output looks like.</p>
+                        <div class="phase-sail">
+                            <span class="sail-tag active">AI Literacy</span>
+                            <span class="sail-tag active">Innovation/Inquiry</span>
+                            <span class="sail-tag">Social Intelligence</span>
+                            <span class="sail-tag">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-item fade-in">
+                    <div class="phase-marker">2</div>
+                    <div class="phase-content">
+                        <span class="phase-subtitle">Integration</span>
+                        <h3>Use AI, But Question Everything</h3>
+                        <p>Students repeat or extend the task with full AI access — but must document their interactions, flag errors, and reflect on how AI output differed from their original work.</p>
+                        <p><strong>Why it matters:</strong> Critical evaluation becomes habit, not afterthought.</p>
+                        <div class="phase-sail">
+                            <span class="sail-tag active">AI Literacy</span>
+                            <span class="sail-tag active">Innovation/Inquiry</span>
+                            <span class="sail-tag active">Social Intelligence</span>
+                            <span class="sail-tag">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phase-item fade-in">
+                    <div class="phase-marker">3</div>
+                    <div class="phase-content">
+                        <span class="phase-subtitle">Leadership</span>
+                        <h3>Own Your Human-AI Partnership</h3>
+                        <p>Students develop personal frameworks for when to use AI, when to override it, and how to maintain intellectual ownership. They articulate their approach and defend it to peers.</p>
+                        <p><strong>Why it matters:</strong> Leadership means knowing when to lead the tool, not follow it.</p>
+                        <div class="phase-sail">
+                            <span class="sail-tag active">AI Literacy</span>
+                            <span class="sail-tag active">Innovation/Inquiry</span>
+                            <span class="sail-tag active">Social Intelligence</span>
+                            <span class="sail-tag active">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof of Concept -->
+    <section class="proof-section">
+        <div class="container">
+            <div class="proof-box fade-in">
+                <div class="proof-label">
+                    <span class="badge">Proof of Concept</span>
+                    <h3>Already Working in the Classroom</h3>
+                </div>
+                <div class="proof-content">
+                    <blockquote>"One of the most significant obstacles I encountered was staying critical about myself when AI made the process of writing so simple and quick... I observed that the more I was depending on it, the less I was thinking about the concepts of underlying strategies."</blockquote>
+                    <p class="proof-attribution">— <strong>Student reflection</strong> from pilot implementation in Strategy course, Fall 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credential -->
+    <section class="credential-section" id="credential">
+        <div class="container">
+            <span class="section-label">The Credential</span>
+            <h2 class="section-title">A Badge That Means Something</h2>
+            <p class="section-intro">Completion earns students a verified micro-credential they can display on LinkedIn — signaling to employers that they've developed genuine AI critical thinking skills.</p>
+
+            <div class="credential-features">
+                <div class="credential-feature fade-in">
+                    <h3>Portable & Embeddable</h3>
+                    <p>Any professor can copy the module into their Canvas course and require completion. Students earn the same credential regardless of which course hosts it.</p>
+                </div>
+                <div class="credential-feature fade-in">
+                    <h3>Pathway Compatible</h3>
+                    <p>Can be integrated into Suffolk's AI Fluency pathway as an alternative completion option — or stand alone as a supplementary credential.</p>
+                </div>
+                <div class="credential-feature fade-in">
+                    <h3>Employer Verifiable</h3>
+                    <p>Built on digital credentialing standards (Credly-compatible) with metadata showing skills verified, issuing institution, and completion date.</p>
+                </div>
+                <div class="credential-feature fade-in">
+                    <h3>Discipline Agnostic</h3>
+                    <p>The core scaffold works across marketing, finance, accounting, management, and ISOM. Professors customize the domain-specific task; the credential stays consistent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrity -->
+    <section class="integrity-section" id="integrity">
+        <div class="container">
+            <span class="section-label">Academic Integrity</span>
+            <h2 class="section-title">Assessments That Can't Be Gamed</h2>
+            <p class="section-intro">Traditional tests fail when students can ask AI for answers. Our approach uses assessments that are either impossible to outsource or pointless to outsource.</p>
+
+            <div class="integrity-grid">
+                <div class="integrity-card fade-in">
+                    <span class="integrity-number">01</span>
+                    <h3>Personal Artifact Documentation</h3>
+                    <p>Students submit screenshots of their actual AI conversations from their own coursework, then annotate what they asked, what AI got wrong, and what they'd do differently.</p>
+                    <span class="highlight">Hard to fake — requires real interaction history</span>
+                </div>
+                <div class="integrity-card fade-in">
+                    <span class="integrity-number">02</span>
+                    <h3>Live Metacognitive Prompts</h3>
+                    <p>Short, timed reflection questions embedded during the module — not just at the end. Time constraints and specificity make AI assistance impractical.</p>
+                    <span class="highlight">Speed + specificity = authentic responses</span>
+                </div>
+                <div class="integrity-card fade-in">
+                    <span class="integrity-number">03</span>
+                    <h3>Peer Accountability</h3>
+                    <p>Students review a peer's AI interaction log and write a brief critique. This creates social accountability and doubles the critical thinking practice.</p>
+                    <span class="highlight">Someone else will see your work</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SAIL Pillars -->
+    <section class="sail-section">
+        <div class="container">
+            <span class="section-label">The Foundation</span>
+            <h2 class="section-title">Built on the SAIL Framework</h2>
+            <p class="section-intro">Four pillars that prepare students not just to use AI, but to lead in an AI-augmented world.</p>
+
+            <div class="sail-grid">
+                <div class="sail-pillar fade-in">
+                    <div class="sail-letter">S</div>
+                    <h3>Social Intelligence</h3>
+                    <p>Communicating AI decisions to diverse stakeholders with clarity and empathy</p>
+                </div>
+                <div class="sail-pillar fade-in">
+                    <div class="sail-letter">A</div>
+                    <h3>AI Literacy</h3>
+                    <p>Understanding capabilities, limitations, and appropriate use cases</p>
+                </div>
+                <div class="sail-pillar fade-in">
+                    <div class="sail-letter">I</div>
+                    <h3>Innovation/Inquiry</h3>
+                    <p>Questioning outputs, identifying bias, and pushing beyond first answers</p>
+                </div>
+                <div class="sail-pillar fade-in">
+                    <div class="sail-letter">L</div>
+                    <h3>Leadership</h3>
+                    <p>Taking responsibility for human-AI collaboration and its outcomes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <span class="section-label">Next Steps</span>
+            <h2 class="section-title">Ready to Bring This to Your Course?</h2>
+            <p class="section-intro">We're building the Canvas module template now. Contact the SAIL Collaborative to discuss implementation, customization, and credentialing options.</p>
+            <a href="mailto:harslan@suffolk.edu" class="btn btn-primary">Get in Touch →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>SAIL Critical Thinking Module</strong></p>
+        <p>A project of the <a href="#">SAIL Collaborative</a> at Suffolk University's Sawyer Business School</p>
+        <div class="footer-sail">
+            <span>Social Intelligence</span>
+            <span>·</span>
+            <span>AI Literacy</span>
+            <span>·</span>
+            <span>Innovation/Inquiry</span>
+            <span>·</span>
+            <span>Leadership</span>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
